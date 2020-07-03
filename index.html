@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <br>
+    <div class="container col-9">
+        <!-- відображений блок, якому є ще три-->
+        <div class="main-block ">
+            <!-- блок з заданим текстом ------------------------------------------------------- -->
+            <div class="top-block">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, hic!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, hic!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, hic!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, hic!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, hic!</p>
+            </div>
+            <!-- ------------------------------------------------------------------------------- -->
+            <!-- блок з кнопками edit i style ----------------------------------------------------->
+            <div class="center-block d-flex justify-content-center">
+                <form class="mt-2 mb-2">
+                    <button class="btn btn-warning" type="button" onclick="editBtn()">edit</button>
+                    <button class="btn btn-primary" type="button" onclick="styleBtn()"
+                        style="background-color: teal; border-color: transparent;">style</button>
+                </form>
+            </div>
+            <!-- ------------------------------------------------------------------------------ -->
+            <!-- блок з 
+                прихованим блоком1 з textarea для редагування тексту і кнопками save i add,
+                який з'являється при кліку на edit
+                та прихованим блоком2 для стилізації тексту,
+                який з'являється при кліку кнопку style -->
+            <div class="bottom-block">
+                <!-- прихованим блоком1 для редагування тексту -->
+                <div class="edit-block hidden">
+                    <form>
+                        <textarea class="area form-control" rows="7"></textarea>
+                        <button class="btn btn-danger mt-2" type="button" onclick="addBtn()">add</button>
+                        <button class="btn btn-success mt-2" type="button" onclick="saveBtn()">save</button>
+                    </form>
+                </div>
+                <!-- прихований блок2 для стилізації тексту -->
+                <div class="style-block hidden col-9 row">
+                    <div>
+                        <!-- форма для вибору розміру тексту -->
+                        <form name="formSize">
+                            <h6>Font Size:</h6>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input onclick="fontSize()" type="radio" value="12px" id="customRadioInline1"
+                                    name="size" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline1">12px</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input onclick="fontSize()" type="radio" value="14px" id="customRadioInline2"
+                                    name="size" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline2">14px</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input onclick="fontSize()" type="radio" value="16px" id="customRadioInline3"
+                                    name="size" class="custom-control-input" checked>
+                                <label class="custom-control-label" for="customRadioInline3">16px</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input onclick="fontSize()" type="radio" value="18px" id="customRadioInline4"
+                                    name="size" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline4">18px</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input onclick="fontSize()" type="radio" value="20px" id="customRadioInline5"
+                                    name="size" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline5">20px</label>
+                            </div>
+                        </form>
+                        <!-- ------------------------------------------------------------------ -->
+                        <br>
+                        <!-- форма для вибору font-family ---------------------------------------->
+                        <form name="formFamizy">
+                            <h6>Font Family:</h6>
+                            <select onchange="fontFamily()" class="custom-select col-5">
+                                <option value="Choose option" selected>Choose option</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="fantasy">fantazy</option>
+                                <option value="monospace">monospace</option>
+                                <option value="sans-serif">sans-serif</option>
+                            </select>
+                        </form>
+                        <!-- ----------------------------------------------------------------- -->
+                        <br>
+                        <!-- форма для вибору кольору тексту ------------------------------------>
+                        <form name="formColors">
+                            <h6>Colors:</h6>
+                            <input type="button" value="text color" class="btn btn-secondary" name="txColor">
+                            <input type="button" value="background color" class="btn btn-secondary" name="bgColor">
+                        </form>
+                        <!-- ----------------------------------------------------------------- -->
+                        <br>
+                        <!-- форма для вибору стилю тексту -------------------------------------->
+                        <form name="formStyle">
+                            <h6>Style:</h6>
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" onclick="fontWeight()" class="custom-control-input"
+                                    id="customCheck1" name="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">bold</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" onclick="fontStyle()" class="custom-control-input"
+                                    id="customCheck2" name="customCheck1">
+                                <label class="custom-control-label" for="customCheck2">cursive</label>
+                            </div>
+                        </form>
+                        <!-- --------------------------------------------------------------- -->
+                    </div>
+                    <!-- приховані блоки з кольорами---------------------------------------- -->
+                    <div class="col-3 d-flex justify-content-center align-items-center" style=" height: inherit;">
+                        <!-- блок для вибору кольору тексту -->
+                        <div class="hidden hidBox1">
+                            <div class="colors d-flex row flex-wrap">
+                                <div class="color1" style="background: red;"></div>
+                                <div class="color1" style="background: dodgerblue;"></div>
+                                <div class="color1" style="background: green;"></div>
+                                <div class="color1" style="background: black;"></div>
+                                <div class="color1" style="background: rgb(226, 196, 24);"></div>
+                                <div class="color1" style="background: violet;"></div>
+                                <div class="color1" style="background: white;"></div>
+                                <div class="color1" style="background: indigo;"></div>
+                                <div class="color1" style="background: teal;"></div>
+                            </div>
+                        </div>
+                        <!-- блок для вибору кольору background -->
+                        <div class="hidden hidBox2">
+                            <div class="colors d-flex row flex-wrap">
+                                <div class="color2" style="background: red;"></div>
+                                <div class="color2" style="background: dodgerblue;"></div>
+                                <div class="color2" style="background: green;"></div>
+                                <div class="color2" style="background: black;"></div>
+                                <div class="color2" style="background: rgb(226, 196, 24);"></div>
+                                <div class="color2" style="background: violet;"></div>
+                                <div class="color2" style="background: white;"></div>
+                                <div class="color2" style="background: indigo;"></div>
+                                <div class="color2" style="background: teal;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- --------------------------------------------------------------------- -->
+                </div>
+            </div>
+        </div>
+        <!-- прихований блок з опціями для вибору таблиці або списку------------------------- -->
+        <div class="add-block hidden">
+            <form name="formChoose">
+                <h2>Choose what you want: <input type="button" class="btn btn-secondary " value="back"
+                        onclick="backBtn()"></h2>
+
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input onclick="chooseBtn()" type="radio" data-create="table" id="customRadioInline9" name="choose"
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline9">table</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input onclick="chooseBtn()" type="radio" data-create="list" id="customRadioInline10" name="choose"
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline10">list</label>
+                </div>
+            </form>
+            <!-- форма для створення таблиці-------------------------------------------------- -->
+            <form name="formCreateTable" class="formCreateTable hidden">
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Count TR:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="countTr" name="countTr">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Count TD:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="countTd" name="countTd">
+                    </div>
+                </div>
+                <h4>Add style to your table</h4>
+                <div class="form-group row">
+                    <label for="inputW" class="col-sm-2 col-form-label">Width of TD:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control " id="inputW" name="widthTD">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputH" class="col-sm-2 col-form-label">Height of TD:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputH" name="heightTD">
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-group row ml-2">
+                        <label for="inputWbd" class="col col-form-label ">Width of border:</label>
+                        <div class="">
+                            <input type="text" class="form-control smallW" id="inputWbd" name="widthBd">
+                        </div>
+                    </div>
+                    <div class="form-group row ml-2 ">
+                        <p class="ml-3 mr-3 pt-2">Type of border:</p>
+                        <select onchange="" class="custom-select smallW " name="styleBd">
+                            <option value="solid" selected>solid</option>
+                            <option value="double">double</option>
+                            <option value="groove">groove</option>
+                            <option value="inset">inset</option>
+                        </select>
+                    </div>
+                    <div class="form-group row ml-2 ">
+                        <label for="sel1" class="ml-3 mr-3 pt-2">Color of border:</label>
+                        <select onchange="" class="custom-select smallW " id="sel1" name="colorBd">
+                            <option value="black" selected>black</option>
+                            <option value="red">red</option>
+                            <option value="yellow">yellow</option>
+                            <option value="green">green</option>
+                            <option value="teal">teal</option>
+
+                        </select>
+                    </div>
+                </div>
+                <input type="button" value="create table" onclick="createTable()" class="btn btn-success">
+            </form>
+            <!-- ---------------------------------------------------------------------------- -->
+            <!-- форма для створення списку-------------------------------------------------- -->
+            <form name="formCreateList" class="formCreateList hidden">
+                <br>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Count li:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="countLi" class="form-control" id="inputPassword">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2  col-form-label">Type of marks:</label>
+                    <div class="col-sm-10 col-7">
+                        <select name="typeMr" class="custom-select" id="sel1">
+                            <option value="circle" selected>circle</option>
+                            <option value="disc">disc</option>
+                            <option value="square">square</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="button" value="create list" onclick="createList()" class="btn btn-success">
+            </form>
+            <!-- ----------------------------------------------------------------------------- -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
